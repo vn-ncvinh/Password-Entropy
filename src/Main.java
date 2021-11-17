@@ -335,21 +335,21 @@ public class Main extends javax.swing.JFrame {
                 if (Character.isDigit(ch)) {
                     if (!numberFlag) {
                         numberFlag = true;
-                        pool += 10;
+                        pool += number.length;
                     }
                 } else if (Character.isUpperCase(ch)) {
                     if (!capitalFlag) {
                         capitalFlag = true;
-                        pool += 26;
+                        pool += upper.length;
                     }
                 } else if (Character.isLowerCase(ch)) {
                     if (!lowerCaseFlag) {
                         lowerCaseFlag = true;
-                        pool += 26;
+                        pool += lower.length;
                     }
                 } else if (!specialFlag) {
                     specialFlag = true;
-                    pool += 32;
+                    pool += special.length;
                 }
 
             }
