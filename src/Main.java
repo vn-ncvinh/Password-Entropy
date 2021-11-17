@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 //   __   __  _                    _        __               
 //   \ \ / / (_)                  | |       \_\              
@@ -32,7 +34,7 @@ import java.util.logging.Logger;
  * @author ncvinh
  */
 public class Main extends javax.swing.JFrame {
-
+    Image icon = new ImageIcon("key.png").getImage();
     char[] lower = "abcdefghiklmnopqrstuvwxyz".toCharArray();
     char[] upper = "ABCDEFGHIKLMNOPQRSTUVWXYZ".toCharArray();
     char[] number = "0123456789".toCharArray();
@@ -45,6 +47,7 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        setIconImage(icon);
     }
 
     /**
@@ -71,6 +74,7 @@ public class Main extends javax.swing.JFrame {
         passwordlength = new javax.swing.JTextField();
         lengthtxt = new javax.swing.JLabel();
         pooltxt = new javax.swing.JLabel();
+        danhgiatxt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Password Entropy");
@@ -92,9 +96,8 @@ public class Main extends javax.swing.JFrame {
         jLabel1.setText("Điểm:");
 
         point.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        point.setForeground(java.awt.Color.red);
         point.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        point.setText("0");
+        point.setText("0.000");
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel3.setText("Mật khẩu:");
@@ -151,57 +154,68 @@ public class Main extends javax.swing.JFrame {
         pooltxt.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         pooltxt.setText("Pool: 0");
 
+        danhgiatxt.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        danhgiatxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(point, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(163, 163, 163))
+                .addGap(184, 184, 184))
             .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lowercaseopt)
-                            .addComponent(uppercaseopt))
-                        .addGap(91, 91, 91)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(specialopt)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lowercaseopt)
+                                    .addComponent(uppercaseopt))
+                                .addGap(91, 91, 91)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(specialopt)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(26, 26, 26)
+                                        .addComponent(passwordlength, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(numberopt))
+                                .addGap(43, 43, 43)
+                                .addComponent(gen, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(26, 26, 26)
-                                .addComponent(passwordlength, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(numberopt))
-                        .addGap(43, 43, 43)
-                        .addComponent(gen, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(27, 27, 27)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(131, 131, 131)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(pooltxt)
                         .addGap(66, 66, 66)
                         .addComponent(lengthtxt)))
                 .addContainerGap(41, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(172, 172, 172))
+                .addContainerGap()
+                .addComponent(danhgiatxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(point))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(6, 6, 6)
+                .addComponent(danhgiatxt, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -224,7 +238,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(passwordlength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(gen, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pooltxt)
                     .addComponent(lengthtxt))
@@ -343,18 +357,28 @@ public class Main extends javax.swing.JFrame {
             df.setMaximumFractionDigits(3);
             float entropy = (float) (length * (Math.log(pool) / Math.log(2)));
             point.setText("" + df.format(entropy));
-            if (entropy < 20) {
-                point.setForeground(Color.red);
+            if (entropy < 28) {
+                danhgiatxt.setText("Rất yếu");
+//                danhgiatxt.setForeground(Color.red);
+            } else if (entropy < 36) {
+                danhgiatxt.setText("Yếu");
+//                danhgiatxt.setForeground(Color.red);
             } else if (entropy < 60) {
-                point.setForeground(Color.yellow);
+                danhgiatxt.setText("Trung bình");
+//                danhgiatxt.setForeground(Color.yellow);
+            } else if (entropy < 128) {
+                danhgiatxt.setText("Mạnh");
+//                danhgiatxt.setForeground(Color.green);
             } else {
-                point.setForeground(Color.GREEN);
+                danhgiatxt.setText("Rất mạnh");
+//                danhgiatxt.setForeground(Color.green);
             }
             pooltxt.setText("Pool: " + pool);
             lengthtxt.setText("Độ dài: " + length);
         } else {
-            point.setText("0");
-            point.setForeground(Color.red);
+            point.setText("0.000");
+//            point.setForeground(Color.red);
+            danhgiatxt.setText("");
             pooltxt.setText("Pool: 0");
             lengthtxt.setText("Độ dài: 0");
 
@@ -398,6 +422,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel danhgiatxt;
     private javax.swing.JButton gen;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
